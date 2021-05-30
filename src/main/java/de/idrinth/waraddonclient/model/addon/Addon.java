@@ -5,35 +5,35 @@ import java.util.List;
 
 public interface Addon {
 
-    List<String> getTags();
+  List<String> getTags();
 
-    boolean hasTag(String tag);
+  boolean hasTag(String tag);
 
-    String getVersion();
+  String getVersion();
 
-    String getInstalled();
+  String getInstalled();
 
-    String getDescription(String language);
+  String getDescription(String language);
 
-    String getName();
+  String getName();
 
-    String getStatus();
+  String getStatus();
 
-    void install() throws IOException;
+  void install() throws IOException;
 
-    void uninstall() throws IOException;
+  void uninstall() throws IOException;
 
-    String getFile();
+  String getFile();
 
-    String getReason();
+  String getReason();
 
-    String getUrl();
-    
-    boolean showSettings();
-    
-    Object[] getTableRow();
+  String getUrl();
 
-    int getEndorsements();
+  boolean showSettings();
 
-    int getDownloads();
+  Object[] getTableRow();
+
+  int getEndorsements();
+
+  int getDownloads();
 }
