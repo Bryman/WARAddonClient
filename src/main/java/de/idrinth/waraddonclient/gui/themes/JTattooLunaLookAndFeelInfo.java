@@ -1,7 +1,8 @@
 package de.idrinth.waraddonclient.gui.themes;
 
 import com.jtattoo.plaf.luna.LunaLookAndFeel;
-import javax.swing.UIManager;
+
+import javax.swing.*;
 
 public class JTattooLunaLookAndFeelInfo extends UIManager.LookAndFeelInfo {
     public JTattooLunaLookAndFeelInfo() {

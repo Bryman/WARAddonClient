@@ -1,6 +1,7 @@
 package de.idrinth.waraddonclient;
 
 import de.idrinth.waraddonclient.service.logger.BaseLogger;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

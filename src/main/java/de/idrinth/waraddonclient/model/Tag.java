@@ -1,9 +1,10 @@
 package de.idrinth.waraddonclient.model;
 
 import de.idrinth.waraddonclient.model.addon.Addon;
+
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
-import javax.swing.JCheckBoxMenuItem;
 
 public class Tag {
 

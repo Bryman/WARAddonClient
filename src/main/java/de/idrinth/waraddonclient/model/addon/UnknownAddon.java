@@ -3,19 +3,19 @@ package de.idrinth.waraddonclient.model.addon;
 import de.idrinth.waraddonclient.Utils;
 import de.idrinth.waraddonclient.model.InvalidArgumentException;
 import de.idrinth.waraddonclient.service.Config;
-import de.idrinth.waraddonclient.service.logger.BaseLogger;
 import de.idrinth.waraddonclient.service.Request;
 import de.idrinth.waraddonclient.service.SilencingErrorHandler;
 import de.idrinth.waraddonclient.service.XmlParser;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import javax.xml.parsers.FactoryConfigurationError;
+import de.idrinth.waraddonclient.service.logger.BaseLogger;
 import org.apache.commons.io.FilenameUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import javax.xml.parsers.FactoryConfigurationError;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class UnknownAddon implements Addon {
     
@@ -116,10 +116,6 @@ public class UnknownAddon implements Addon {
                 + "<p>"+defaultDescription+"</p>";
     }
 
-    public HashMap<String, String> getDescriptions() {
-        return new HashMap<>();
-    }
-
     public String getName() {
         return name;
     }
@@ -127,16 +123,6 @@ public class UnknownAddon implements Addon {
     public void uninstall() throws IOException {
         Utils.deleteFolder(folder);
         installed="-";
-    }
-
-    public void fileWasChanged(File changedFile) {
-        if (config.isEnabled(name) && changedFile.isFile() && changedFile.getName().equalsIgnoreCase(file)) {
-            try {
-                client.upload(url, changedFile);
-            } catch (Exception exception) {
-                logger.warn(exception);
-            }
-        }
     }
 
     @Override
@@ -210,7 +196,7 @@ public class UnknownAddon implements Addon {
     }
 
     @Override
-    public void install() throws IOException {
+    public void install() {
         throw new UnsupportedOperationException("You can't install an unknown Add-On.");
     }
 

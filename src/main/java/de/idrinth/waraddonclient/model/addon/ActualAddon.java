@@ -1,13 +1,23 @@
 package de.idrinth.waraddonclient.model.addon;
 
 import com.github.zafarkhaja.semver.Version;
-import de.idrinth.waraddonclient.service.Config;
 import de.idrinth.waraddonclient.Utils;
 import de.idrinth.waraddonclient.model.InvalidArgumentException;
-import de.idrinth.waraddonclient.service.logger.BaseLogger;
+import de.idrinth.waraddonclient.service.Config;
 import de.idrinth.waraddonclient.service.Request;
 import de.idrinth.waraddonclient.service.SilencingErrorHandler;
 import de.idrinth.waraddonclient.service.XmlParser;
+import de.idrinth.waraddonclient.service.logger.BaseLogger;
+import net.lingala.zip4j.ZipFile;
+import org.apache.commons.io.FileUtils;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.swing.*;
+import javax.xml.parsers.FactoryConfigurationError;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,15 +25,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.swing.JEditorPane;
-import javax.xml.parsers.FactoryConfigurationError;
-import net.lingala.zip4j.ZipFile;
-import org.apache.commons.io.FileUtils;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 public class ActualAddon implements de.idrinth.waraddonclient.model.addon.Addon {
 
@@ -152,7 +153,7 @@ public class ActualAddon implements de.idrinth.waraddonclient.model.addon.Addon 
      * @param data
      * @return String
      */
-    private final String getStringFromObject(String key, javax.json.JsonObject data) {
+    private String getStringFromObject(String key, javax.json.JsonObject data) {
         if (key != null && data != null && data.containsKey(key) && !data.isNull(key)) {
             return java.util.regex.Pattern.compile("^\"|\"$").matcher(data.get(key).toString()).replaceAll("");
         }

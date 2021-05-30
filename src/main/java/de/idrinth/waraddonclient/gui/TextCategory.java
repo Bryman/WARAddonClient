@@ -2,8 +2,9 @@ package de.idrinth.waraddonclient.gui;
 
 import de.idrinth.waraddonclient.model.GuiAddonList;
 import de.idrinth.waraddonclient.model.addon.Addon;
+
+import javax.swing.*;
 import java.util.List;
-import javax.swing.RowFilter;
 
 public class TextCategory extends RowFilter<Addon, Integer> {
 

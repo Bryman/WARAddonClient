@@ -1,7 +1,8 @@
 package de.idrinth.waraddonclient.gui.themes;
 
 import com.jtattoo.plaf.mint.MintLookAndFeel;
-import javax.swing.UIManager;
+
+import javax.swing.*;
 
 public class JTattooMintLookAndFeelInfo extends UIManager.LookAndFeelInfo {
     public JTattooMintLookAndFeelInfo() {

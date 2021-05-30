@@ -1,13 +1,14 @@
 package de.idrinth.waraddonclient.model;
 
 import de.idrinth.waraddonclient.service.logger.BaseLogger;
+import org.apache.http.ssl.TrustStrategy;
+
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import org.apache.http.ssl.TrustStrategy;
 
 public class TrustManager implements TrustStrategy {
 
@@ -56,7 +57,7 @@ public class TrustManager implements TrustStrategy {
         System.setProperty("javax.net.ssl.trustStorePassword", password);
     }
 
-    private void addCertToStore(String name) throws IOException, CertificateException, KeyStoreException {
+    private void addCertToStore(String name) throws IOException, KeyStoreException {
         java.net.URL resource = getClass().getResource("/certificates/" + name + ".cer");
         try {
             assert resource != null;

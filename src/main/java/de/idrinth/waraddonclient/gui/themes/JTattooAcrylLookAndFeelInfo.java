@@ -1,7 +1,8 @@
 package de.idrinth.waraddonclient.gui.themes;
 
 import com.jtattoo.plaf.acryl.AcrylLookAndFeel;
-import javax.swing.UIManager;
+
+import javax.swing.*;
 
 public class JTattooAcrylLookAndFeelInfo extends UIManager.LookAndFeelInfo {
     public JTattooAcrylLookAndFeelInfo() {

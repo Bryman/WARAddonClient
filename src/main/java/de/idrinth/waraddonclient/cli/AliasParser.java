@@ -1,11 +1,12 @@
 package de.idrinth.waraddonclient.cli;
 
-import java.util.Properties;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+
+import java.util.Properties;
 
 
 public class AliasParser extends DefaultParser {

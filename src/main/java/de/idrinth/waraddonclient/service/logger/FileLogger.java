@@ -1,11 +1,12 @@
 package de.idrinth.waraddonclient.service.logger;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import org.apache.commons.io.FileUtils;
 
 public final class FileLogger extends BaseLogger {
     private final File output;

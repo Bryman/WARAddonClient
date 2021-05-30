@@ -1,7 +1,8 @@
 package de.idrinth.waraddonclient.gui.themes;
 
 import com.jtattoo.plaf.graphite.GraphiteLookAndFeel;
-import javax.swing.UIManager;
+
+import javax.swing.*;
 
 public class JTattooGraphiteLookAndFeelInfo extends UIManager.LookAndFeelInfo {
     public JTattooGraphiteLookAndFeelInfo() {

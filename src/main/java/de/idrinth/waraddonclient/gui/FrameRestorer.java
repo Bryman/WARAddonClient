@@ -2,9 +2,8 @@ package de.idrinth.waraddonclient.gui;
 
 import de.idrinth.waraddonclient.service.Config;
 import de.idrinth.waraddonclient.service.DelayedRunner;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Toolkit;
+
+import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 

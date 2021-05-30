@@ -1,9 +1,9 @@
 package de.idrinth.waraddonclient.gui.themes;
 
-import java.awt.Color;
-import javax.swing.UIDefaults;
+import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import java.awt.*;
 
 public class IdrinthLookAndFeel extends NimbusLookAndFeel {
 
