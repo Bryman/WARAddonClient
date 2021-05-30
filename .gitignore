@@ -3,3 +3,5 @@
 /AddonClient.jar
 /target/
 /output/
+.gradle/
+build/
