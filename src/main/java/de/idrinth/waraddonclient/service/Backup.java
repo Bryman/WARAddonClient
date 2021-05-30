@@ -1,10 +1,11 @@
 package de.idrinth.waraddonclient.service;
 
 import de.idrinth.waraddonclient.Utils;
+import net.lingala.zip4j.exception.ZipException;
+
 import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import net.lingala.zip4j.exception.ZipException;
 
 public class Backup {
     private final Config config;

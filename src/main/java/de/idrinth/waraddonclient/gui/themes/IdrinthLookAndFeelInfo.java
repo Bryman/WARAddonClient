@@ -1,6 +1,6 @@
 package de.idrinth.waraddonclient.gui.themes;
 
-import javax.swing.UIManager;
+import javax.swing.*;
 
 public class IdrinthLookAndFeelInfo extends UIManager.LookAndFeelInfo {
     public IdrinthLookAndFeelInfo() {

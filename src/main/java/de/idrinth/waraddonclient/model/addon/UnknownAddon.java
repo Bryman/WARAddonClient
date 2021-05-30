@@ -3,19 +3,19 @@ package de.idrinth.waraddonclient.model.addon;
 import de.idrinth.waraddonclient.Utils;
 import de.idrinth.waraddonclient.model.InvalidArgumentException;
 import de.idrinth.waraddonclient.service.Config;
-import de.idrinth.waraddonclient.service.logger.BaseLogger;
 import de.idrinth.waraddonclient.service.Request;
 import de.idrinth.waraddonclient.service.SilencingErrorHandler;
 import de.idrinth.waraddonclient.service.XmlParser;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import javax.xml.parsers.FactoryConfigurationError;
+import de.idrinth.waraddonclient.service.logger.BaseLogger;
 import org.apache.commons.io.FilenameUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import javax.xml.parsers.FactoryConfigurationError;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class UnknownAddon implements Addon {
     

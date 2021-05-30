@@ -1,8 +1,9 @@
 package de.idrinth.waraddonclient.service;
 
 import de.idrinth.waraddonclient.Main;
-import java.awt.Dimension;
-import java.awt.Point;
+import org.apache.commons.io.IOUtils;
+
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -10,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
-import org.apache.commons.io.IOUtils;
 
 public class Config {
 

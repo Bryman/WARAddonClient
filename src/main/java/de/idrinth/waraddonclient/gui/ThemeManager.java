@@ -1,6 +1,5 @@
 package de.idrinth.waraddonclient.gui;
 
-import de.idrinth.waraddonclient.service.Config;
 import de.idrinth.waraddonclient.gui.themes.DarculaLookAndFeelInfo;
 import de.idrinth.waraddonclient.gui.themes.FlatDarculaLookAndFeelInfo;
 import de.idrinth.waraddonclient.gui.themes.FlatDarkLookAndFeelInfo;
@@ -20,13 +19,13 @@ import de.idrinth.waraddonclient.gui.themes.JTattooMintLookAndFeelInfo;
 import de.idrinth.waraddonclient.gui.themes.JTattooNoireLookAndFeelInfo;
 import de.idrinth.waraddonclient.gui.themes.JTattooSmartLookAndFeelInfo;
 import de.idrinth.waraddonclient.gui.themes.JTattooTextureLookAndFeelInfo;
-import de.idrinth.waraddonclient.service.logger.BaseLogger;
+import de.idrinth.waraddonclient.service.Config;
 import de.idrinth.waraddonclient.service.Restarter;
+import de.idrinth.waraddonclient.service.logger.BaseLogger;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
-import javax.swing.JMenu;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public final class ThemeManager {
 

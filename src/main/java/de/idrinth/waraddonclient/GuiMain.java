@@ -1,22 +1,23 @@
 package de.idrinth.waraddonclient;
 
-import de.idrinth.waraddonclient.service.Config;
 import de.idrinth.waraddonclient.gui.FrameRestorer;
 import de.idrinth.waraddonclient.gui.ThemeManager;
 import de.idrinth.waraddonclient.gui.Window;
 import de.idrinth.waraddonclient.model.GuiAddonList;
 import de.idrinth.waraddonclient.service.Backup;
+import de.idrinth.waraddonclient.service.Config;
 import de.idrinth.waraddonclient.service.FileSystem;
 import de.idrinth.waraddonclient.service.FileWatcher;
-import de.idrinth.waraddonclient.service.logger.GuiLogger;
-import de.idrinth.waraddonclient.service.logger.MultiLogger;
 import de.idrinth.waraddonclient.service.Request;
 import de.idrinth.waraddonclient.service.Restarter;
 import de.idrinth.waraddonclient.service.Shedule;
 import de.idrinth.waraddonclient.service.Version;
 import de.idrinth.waraddonclient.service.XmlParser;
-import java.io.IOException;
+import de.idrinth.waraddonclient.service.logger.GuiLogger;
+import de.idrinth.waraddonclient.service.logger.MultiLogger;
+
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 public class GuiMain extends BaseMain {
 

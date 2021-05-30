@@ -1,7 +1,8 @@
 package de.idrinth.waraddonclient.gui.themes;
 
 import com.jtattoo.plaf.fast.FastLookAndFeel;
-import javax.swing.UIManager;
+
+import javax.swing.*;
 
 public class JTattooFastLookAndFeelInfo extends UIManager.LookAndFeelInfo {
     public JTattooFastLookAndFeelInfo() {

@@ -1,6 +1,6 @@
 package de.idrinth.waraddonclient.service.logger;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class GuiLogger extends BaseLogger {
 

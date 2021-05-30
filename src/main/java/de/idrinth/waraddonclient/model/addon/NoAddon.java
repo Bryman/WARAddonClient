@@ -1,7 +1,5 @@
 package de.idrinth.waraddonclient.model.addon;
 
-import java.io.IOException;
-
 public class NoAddon implements de.idrinth.waraddonclient.model.addon.Addon {
 
     @Override

@@ -1,8 +1,9 @@
 package de.idrinth.waraddonclient.service;
 
-import de.idrinth.waraddonclient.service.logger.BaseLogger;
 import de.idrinth.waraddonclient.Utils;
-import javax.swing.JLabel;
+import de.idrinth.waraddonclient.service.logger.BaseLogger;
+
+import javax.swing.*;
 
 public class Version implements java.lang.Runnable {
     private final Request client;

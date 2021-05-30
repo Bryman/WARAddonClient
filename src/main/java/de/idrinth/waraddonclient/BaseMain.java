@@ -1,19 +1,20 @@
 package de.idrinth.waraddonclient;
 
-import de.idrinth.waraddonclient.service.Config;
 import de.idrinth.waraddonclient.model.TrustManager;
+import de.idrinth.waraddonclient.service.Config;
+import de.idrinth.waraddonclient.service.FileSystem;
+import de.idrinth.waraddonclient.service.Request;
 import de.idrinth.waraddonclient.service.logger.BaseLogger;
 import de.idrinth.waraddonclient.service.logger.FileLogger;
-import de.idrinth.waraddonclient.service.FileSystem;
 import de.idrinth.waraddonclient.service.logger.MultiLogger;
-import de.idrinth.waraddonclient.service.Request;
+
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
-import javax.xml.parsers.ParserConfigurationException;
 
 abstract class BaseMain {
     private final MultiLogger multiLogger = new MultiLogger();

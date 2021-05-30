@@ -1,30 +1,28 @@
 package de.idrinth.waraddonclient.gui;
 
 import darrylbu.util.MenuScroller;
-import de.idrinth.waraddonclient.service.Config;
-import de.idrinth.waraddonclient.service.Backup;
-import de.idrinth.waraddonclient.model.addon.Addon;
 import de.idrinth.waraddonclient.model.GuiAddonList;
 import de.idrinth.waraddonclient.model.addon.ActualAddon;
+import de.idrinth.waraddonclient.model.addon.Addon;
 import de.idrinth.waraddonclient.model.addon.NoAddon;
-
-import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import net.lingala.zip4j.exception.ZipException;
-import javax.swing.table.TableRowSorter;
-import de.idrinth.waraddonclient.service.Version;
-import de.idrinth.waraddonclient.service.logger.BaseLogger;
+import de.idrinth.waraddonclient.service.Backup;
+import de.idrinth.waraddonclient.service.Config;
 import de.idrinth.waraddonclient.service.Restarter;
 import de.idrinth.waraddonclient.service.Shedule;
+import de.idrinth.waraddonclient.service.Version;
+import de.idrinth.waraddonclient.service.logger.BaseLogger;
+import net.lingala.zip4j.exception.ZipException;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Window extends JFrame {
 

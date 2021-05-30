@@ -1,7 +1,6 @@
 package de.idrinth.waraddonclient.service;
 
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
+import javax.swing.*;
 
 public class DelayedRunner {
 

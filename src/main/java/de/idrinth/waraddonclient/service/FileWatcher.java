@@ -1,10 +1,14 @@
 package de.idrinth.waraddonclient.service;
 
-import de.idrinth.waraddonclient.service.logger.BaseLogger;
 import de.idrinth.waraddonclient.model.GuiAddonList;
+import de.idrinth.waraddonclient.service.logger.BaseLogger;
+
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
 import java.util.Arrays;
 
 public class FileWatcher implements java.lang.Runnable {

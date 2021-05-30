@@ -1,20 +1,20 @@
 package de.idrinth.waraddonclient.service;
 
-import de.idrinth.waraddonclient.service.logger.BaseLogger;
 import de.idrinth.waraddonclient.Utils;
-import java.io.File;
-import java.io.IOException;
 import de.idrinth.waraddonclient.model.TrustManager;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
+import de.idrinth.waraddonclient.service.logger.BaseLogger;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
+import java.io.File;
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 
 public class Request {
 
