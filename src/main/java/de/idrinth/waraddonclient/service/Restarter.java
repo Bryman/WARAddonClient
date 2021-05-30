@@ -14,28 +14,22 @@ public class Restarter {
             File jar = new File(baseDir + "/WARAddonClient.jar");
             File exe = new File(baseDir + "/WARAddonClient.exe");
             if (exe.exists()) {
-                Runtime.getRuntime().addShutdownHook(new Thread() {
-                    @Override
-                    public void run() {
-                        try {
-                            Runtime.getRuntime().exec(exe.getAbsolutePath());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                    try {
+                        Runtime.getRuntime().exec(exe.getAbsolutePath());
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                });
+                }));
                 System.exit(0);
             } else if (jar.exists()) {
-                Runtime.getRuntime().addShutdownHook(new Thread() {
-                    @Override
-                    public void run() {
-                        try {
-                            Runtime.getRuntime().exec("java -jar "+jar.getAbsolutePath());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                    try {
+                        Runtime.getRuntime().exec("java -jar "+jar.getAbsolutePath());
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                });
+                }));
                 System.exit(0);
             }
             throw new IOException("Executable not found, did you replace it?");

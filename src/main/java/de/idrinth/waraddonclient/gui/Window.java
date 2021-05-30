@@ -139,11 +139,7 @@ public class Window extends JFrame {
         base.setMinimumSize(new java.awt.Dimension(300, 200));
         base.setName(""); // NOI18N
 
-        inputSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputSearchActionPerformed(evt);
-            }
-        });
+        inputSearch.addActionListener(this::inputSearchActionPerformed);
         inputSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 inputSearchKeyReleased(evt);
@@ -161,14 +157,14 @@ public class Window extends JFrame {
                 "Status", "Name", "Version", "Installed", "Endorsements", "Downloads"
             }
         ) {
-            Class[] types = new Class [] {
+            final Class<Object>[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class<Object> getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
 
@@ -234,18 +230,10 @@ public class Window extends JFrame {
         scrollDescription.setViewportView(description);
 
         installButton.setText("(Re)Install");
-        installButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                installButtonActionPerformed(evt);
-            }
-        });
+        installButton.addActionListener(this::installButtonActionPerformed);
 
         removeButton.setText("Remove");
-        removeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeButtonActionPerformed(evt);
-            }
-        });
+        removeButton.addActionListener(this::removeButtonActionPerformed);
 
         addonTitle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
@@ -309,11 +297,7 @@ public class Window extends JFrame {
         uploadLabel.setText("Upload URL");
 
         uploadEnable.setText("Allow Upload");
-        uploadEnable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uploadEnableActionPerformed(evt);
-            }
-        });
+        uploadEnable.addActionListener(this::uploadEnableActionPerformed);
 
         uploadFile.setEditable(false);
         uploadFile.setToolTipText("");
@@ -372,27 +356,15 @@ public class Window extends JFrame {
 
         menuAbout.setText("About");
         menuAbout.setToolTipText("");
-        menuAbout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuAboutActionPerformed(evt);
-            }
-        });
+        menuAbout.addActionListener(this::menuAboutActionPerformed);
         menuFile.add(menuAbout);
 
         menuRestart.setText("Restart");
-        menuRestart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuRestartActionPerformed(evt);
-            }
-        });
+        menuRestart.addActionListener(this::menuRestartActionPerformed);
         menuFile.add(menuRestart);
 
         menuQuit.setText("Quit");
-        menuQuit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuQuitActionPerformed(evt);
-            }
-        });
+        menuQuit.addActionListener(this::menuQuitActionPerformed);
         menuFile.add(menuQuit);
 
         mainMenu.add(menuFile);
@@ -404,19 +376,11 @@ public class Window extends JFrame {
         menuTools.setText("Tools");
 
         menuCreateBackup.setText("Create Backup");
-        menuCreateBackup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuCreateBackupActionPerformed(evt);
-            }
-        });
+        menuCreateBackup.addActionListener(this::menuCreateBackupActionPerformed);
         menuTools.add(menuCreateBackup);
 
         menuRestoreBackup.setText("Restore Backup");
-        menuRestoreBackup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuRestoreBackupActionPerformed(evt);
-            }
-        });
+        menuRestoreBackup.addActionListener(this::menuRestoreBackupActionPerformed);
         menuTools.add(menuRestoreBackup);
 
         mainMenu.add(menuTools);
@@ -427,27 +391,15 @@ public class Window extends JFrame {
 
         menuEnglish.setSelected(true);
         menuEnglish.setText("English");
-        menuEnglish.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuEnglishActionPerformed(evt);
-            }
-        });
+        menuEnglish.addActionListener(this::menuEnglishActionPerformed);
         menuLanguage.add(menuEnglish);
 
         menuFrancais.setText("Francais");
-        menuFrancais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuFrancaisActionPerformed(evt);
-            }
-        });
+        menuFrancais.addActionListener(this::menuFrancaisActionPerformed);
         menuLanguage.add(menuFrancais);
 
         menuDeutsch.setText("Deutsch");
-        menuDeutsch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuDeutschActionPerformed(evt);
-            }
-        });
+        menuDeutsch.addActionListener(this::menuDeutschActionPerformed);
         menuLanguage.add(menuDeutsch);
 
         menuSettings.add(menuLanguage);
@@ -460,35 +412,19 @@ public class Window extends JFrame {
         menuLinks.setText("Links");
 
         menuGuilded.setText("Guilded: Idrinth's Addons");
-        menuGuilded.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuGuildedActionPerformed(evt);
-            }
-        });
+        menuGuilded.addActionListener(this::menuGuildedActionPerformed);
         menuLinks.add(menuGuilded);
 
         menuBuyMeACoffee.setText("BuyMeACoffee");
-        menuBuyMeACoffee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuBuyMeACoffeeActionPerformed(evt);
-            }
-        });
+        menuBuyMeACoffee.addActionListener(this::menuBuyMeACoffeeActionPerformed);
         menuLinks.add(menuBuyMeACoffee);
 
         menuSource.setText("GitHub:WARAddonClient");
-        menuSource.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSourceActionPerformed(evt);
-            }
-        });
+        menuSource.addActionListener(this::menuSourceActionPerformed);
         menuLinks.add(menuSource);
 
         menuWebpage.setText("Webpage");
-        menuWebpage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuWebpageActionPerformed(evt);
-            }
-        });
+        menuWebpage.addActionListener(this::menuWebpageActionPerformed);
         menuLinks.add(menuWebpage);
 
         mainMenu.add(menuLinks);
