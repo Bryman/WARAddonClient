@@ -733,7 +733,7 @@ public class Window extends JFrame {
          */
         public void updateUi() {
             description.setText(activeAddon.getDescription(config.getLanguage()));
-            if (ActualAddon.class.isInstance(activeAddon)) {
+            if (activeAddon instanceof ActualAddon) {
                 new Thread(((ActualAddon) activeAddon).loadDescription(description, config.getLanguage())).start();
             }
             addonTitle.setText(activeAddon.getName());
