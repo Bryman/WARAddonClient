@@ -4,10 +4,8 @@ import de.idrinth.waraddonclient.service.logger.BaseLogger;
 import de.idrinth.waraddonclient.model.GuiAddonList;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.StandardWatchEventKinds;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.WatchService;
+import java.nio.file.*;
+import java.util.Arrays;
 
 public class FileWatcher implements java.lang.Runnable {
 
@@ -28,10 +26,9 @@ public class FileWatcher implements java.lang.Runnable {
             path.mkdirs();
         }
         watcher = path.toPath().getFileSystem().newWatchService();
-        WatchEvent.Kind[] modes = new WatchEvent.Kind[2];
-        modes[0] = StandardWatchEventKinds.ENTRY_CREATE;
-        modes[1] = StandardWatchEventKinds.ENTRY_MODIFY;
-        path.toPath().register(watcher, modes);
+        path.toPath().register(watcher, (WatchEvent.Kind<?>) Arrays.asList(
+                StandardWatchEventKinds.ENTRY_CREATE,
+                StandardWatchEventKinds.ENTRY_MODIFY));
     }
 
     @Override
@@ -51,7 +48,7 @@ public class FileWatcher implements java.lang.Runnable {
      * @param event
      * @return
      */
-    private boolean isValidEvent(WatchEvent event) {
+    private boolean isValidEvent(WatchEvent<?> event) {
         return event.kind() == StandardWatchEventKinds.ENTRY_CREATE || event.kind() == StandardWatchEventKinds.ENTRY_MODIFY;
     }
 
