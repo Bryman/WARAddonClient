@@ -32,9 +32,9 @@ public class FileWatcher implements java.lang.Runnable {
     path.toPath()
         .register(
             watcher,
-            (WatchEvent.Kind<?>)
-                Arrays.asList(
-                    StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY));
+            Arrays.asList(
+                    StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY)
+                .toArray(new WatchEvent.Kind<?>[] {}));
   }
 
   @Override
