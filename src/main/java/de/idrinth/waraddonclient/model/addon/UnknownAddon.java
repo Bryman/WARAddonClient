@@ -116,10 +116,6 @@ public class UnknownAddon implements Addon {
                 + "<p>"+defaultDescription+"</p>";
     }
 
-    public HashMap<String, String> getDescriptions() {
-        return new HashMap<>();
-    }
-
     public String getName() {
         return name;
     }
@@ -127,16 +123,6 @@ public class UnknownAddon implements Addon {
     public void uninstall() throws IOException {
         Utils.deleteFolder(folder);
         installed="-";
-    }
-
-    public void fileWasChanged(File changedFile) {
-        if (config.isEnabled(name) && changedFile.isFile() && changedFile.getName().equalsIgnoreCase(file)) {
-            try {
-                client.upload(url, changedFile);
-            } catch (Exception exception) {
-                logger.warn(exception);
-            }
-        }
     }
 
     @Override
@@ -210,7 +196,7 @@ public class UnknownAddon implements Addon {
     }
 
     @Override
-    public void install() throws IOException {
+    public void install() {
         throw new UnsupportedOperationException("You can't install an unknown Add-On.");
     }
 

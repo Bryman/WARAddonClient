@@ -91,13 +91,4 @@ public class CliMain extends BaseMain {
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp("waraddonclient", options, true);
     }
-
-    public void makeCommonOptions (Options options) {
-        options.addOption("v", "version", false, "Get the version of the WARAddonClient.");
-        options.addOption("s", "set-location", true, "Set the location of the WAR-Folder.");
-        options.addOption("u", "update-all", false, "Update all avaible Addons to the latest version.");
-        options.addOption("i", "install", true, "Install/Update given addon.");
-        options.addOption("r", "remove", true, "Remove given addon.");
-        options.addOption("h", "help", false, "This output.");
-    }
 }
