@@ -7,6 +7,8 @@ import de.idrinth.waraddonclient.model.addon.Addon;
 import de.idrinth.waraddonclient.model.GuiAddonList;
 import de.idrinth.waraddonclient.model.addon.ActualAddon;
 import de.idrinth.waraddonclient.model.addon.NoAddon;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import net.lingala.zip4j.exception.ZipException;
@@ -15,9 +17,7 @@ import de.idrinth.waraddonclient.service.Version;
 import de.idrinth.waraddonclient.service.logger.BaseLogger;
 import de.idrinth.waraddonclient.service.Restarter;
 import de.idrinth.waraddonclient.service.Shedule;
-import java.awt.Desktop;
-import java.awt.FileDialog;
-import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.HyperlinkEvent;
@@ -235,7 +235,7 @@ public class Window extends JFrame {
         removeButton.setText("Remove");
         removeButton.addActionListener(this::removeButtonActionPerformed);
 
-        addonTitle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        addonTitle.setFont(new java.awt.Font("Tahoma", Font.BOLD, 11)); // NOI18N
 
         localVersion.setText("0.0.0");
         localVersion.setToolTipText("Local Version");
