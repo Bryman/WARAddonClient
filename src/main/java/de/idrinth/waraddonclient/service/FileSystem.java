@@ -4,40 +4,41 @@ import javax.swing.*;
 
 public class FileSystem {
 
-    private final Config config;
+  private final Config config;
 
-    public FileSystem(Config config) {
-        this.config = config;
+  public FileSystem(Config config) {
+    this.config = config;
+  }
+
+  public void checkPosition() throws FileSystemException {
+    if (new java.io.File(config.getWARPath() + "/WAR.exe").exists()) {
+      return;
     }
+    throw new FileSystemException(
+        "No WAR.exe found in the specified folder, please try setting it again");
+  }
 
-    public void checkPosition() throws FileSystemException {
-        if (new java.io.File(config.getWARPath() + "/WAR.exe").exists()) {
-            return;
-        }
-        throw new FileSystemException("No WAR.exe found in the specified folder, please try setting it again");
+  public void processPosition() throws FileSystemException {
+    try {
+      checkPosition();
+      return;
+    } catch (FileSystemException ex) {
+      // ignore, the following code will handle it
     }
+    JOptionPane.showMessageDialog(null, "No WAR.exe found, please select it");
+    JFileChooser j = new javax.swing.JFileChooser();
+    int r = j.showOpenDialog(null);
 
-    public void processPosition() throws FileSystemException {
-        try {
-            checkPosition();
-            return;
-        } catch (FileSystemException ex) {
-            //ignore, the following code will handle it
-        }
-        JOptionPane.showMessageDialog(null, "No WAR.exe found, please select it");
-        JFileChooser j = new javax.swing.JFileChooser();
-        int r = j.showOpenDialog(null);
-
-        // if the user selects a file
-        if (r == JFileChooser.APPROVE_OPTION) {
-            config.setWARPath(j.getSelectedFile().getParent());
-        }
-        checkPosition();
+    // if the user selects a file
+    if (r == JFileChooser.APPROVE_OPTION) {
+      config.setWARPath(j.getSelectedFile().getParent());
     }
+    checkPosition();
+  }
 
-    public static class FileSystemException extends Exception {
-        public FileSystemException(String message) {
-            super(message);
-        }
+  public static class FileSystemException extends Exception {
+    public FileSystemException(String message) {
+      super(message);
     }
+  }
 }

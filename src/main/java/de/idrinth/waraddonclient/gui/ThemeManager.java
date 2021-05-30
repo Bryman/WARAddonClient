@@ -22,76 +22,79 @@ import de.idrinth.waraddonclient.gui.themes.JTattooTextureLookAndFeelInfo;
 import de.idrinth.waraddonclient.service.Config;
 import de.idrinth.waraddonclient.service.Restarter;
 import de.idrinth.waraddonclient.service.logger.BaseLogger;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import javax.swing.*;
 
 public final class ThemeManager {
 
-    private final BaseLogger logger;
-    
-    private final Config config;
-    
-    private final Restarter restarter;
+  private final BaseLogger logger;
 
-    public ThemeManager(BaseLogger logger, Config config, Restarter restarter) {
-        this.logger = logger;
-        this.config = config;
-        this.restarter = restarter;
-        install();
-        String preference = config.getTheme();
-        for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-            if (preference.equals(info.getName())) {
-                try {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                    logger.warn("Unable to load theme " + info.getName());
-                }
+  private final Config config;
+
+  private final Restarter restarter;
+
+  public ThemeManager(BaseLogger logger, Config config, Restarter restarter) {
+    this.logger = logger;
+    this.config = config;
+    this.restarter = restarter;
+    install();
+    String preference = config.getTheme();
+    for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+      if (preference.equals(info.getName())) {
+        try {
+          UIManager.setLookAndFeel(info.getClassName());
+          break;
+        } catch (ClassNotFoundException
+            | InstantiationException
+            | IllegalAccessException
+            | UnsupportedLookAndFeelException ex) {
+          logger.warn("Unable to load theme " + info.getName());
+        }
+      }
+    }
+  }
+
+  private void install() {
+    UIManager.installLookAndFeel(new DarculaLookAndFeelInfo());
+    UIManager.installLookAndFeel(new IdrinthLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooAcrylLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooAeroLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooAluminiumLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooBernsteinLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooFastLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooGraphiteLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooHiFiLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooLunaLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooMcWinLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooNoireLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooMintLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooSmartLookAndFeelInfo());
+    UIManager.installLookAndFeel(new JTattooTextureLookAndFeelInfo());
+    UIManager.installLookAndFeel(new FlatLightLookAndFeelInfo());
+    UIManager.installLookAndFeel(new FlatIntelliJLookAndFeelInfo());
+    UIManager.installLookAndFeel(new FlatDarkLookAndFeelInfo());
+    UIManager.installLookAndFeel(new FlatDarculaLookAndFeelInfo());
+  }
+
+  public void addTo(JMenu menu) {
+    for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+      javax.swing.JCheckBoxMenuItem item = new javax.swing.JCheckBoxMenuItem();
+      item.setText(info.getName());
+      item.setSelected(config.getTheme().equals(info.getName()));
+      item.addActionListener(
+          (ActionEvent evt) -> {
+            if (config.getTheme().equals(info.getName())) {
+              return;
             }
-        }
+            config.setTheme(info.getName());
+            try {
+              restarter.restart();
+            } catch (IOException ex) {
+              logger.error("Failed to restart");
+            }
+          });
+      menu.add(item);
     }
-
-    private void install() {
-        UIManager.installLookAndFeel(new DarculaLookAndFeelInfo());
-        UIManager.installLookAndFeel(new IdrinthLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooAcrylLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooAeroLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooAluminiumLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooBernsteinLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooFastLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooGraphiteLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooHiFiLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooLunaLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooMcWinLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooNoireLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooMintLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooSmartLookAndFeelInfo());
-        UIManager.installLookAndFeel(new JTattooTextureLookAndFeelInfo());
-        UIManager.installLookAndFeel(new FlatLightLookAndFeelInfo());
-        UIManager.installLookAndFeel(new FlatIntelliJLookAndFeelInfo());
-        UIManager.installLookAndFeel(new FlatDarkLookAndFeelInfo());
-        UIManager.installLookAndFeel(new FlatDarculaLookAndFeelInfo());
-    }
-
-    public void addTo(JMenu menu) {
-        for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-            javax.swing.JCheckBoxMenuItem item = new javax.swing.JCheckBoxMenuItem();
-            item.setText(info.getName());
-            item.setSelected(config.getTheme().equals(info.getName()));
-            item.addActionListener((ActionEvent evt) -> {
-                if (config.getTheme().equals(info.getName())) {
-                    return;
-                }
-                config.setTheme(info.getName());
-                try {
-                    restarter.restart();
-                } catch (IOException ex) {
-                    logger.error("Failed to restart");
-                }
-            });
-            menu.add(item);
-        }
-    }
+  }
 }

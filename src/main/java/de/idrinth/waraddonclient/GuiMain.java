@@ -15,30 +15,40 @@ import de.idrinth.waraddonclient.service.Version;
 import de.idrinth.waraddonclient.service.XmlParser;
 import de.idrinth.waraddonclient.service.logger.GuiLogger;
 import de.idrinth.waraddonclient.service.logger.MultiLogger;
-
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import javax.xml.parsers.ParserConfigurationException;
 
 public class GuiMain extends BaseMain {
 
-    public GuiMain() {
-        add(new GuiLogger());
-    }
-    
-   @Override
-   protected void main(MultiLogger logger, Config config, Request client, FileSystem file) throws FileSystem.FileSystemException, ParserConfigurationException, IOException {
-       file.processPosition();
-       Shedule schedule = new Shedule();
-       Restarter restarter = new  Restarter(config);
-       ThemeManager themes = new ThemeManager(logger, config, restarter);
-       GuiAddonList addonList = new GuiAddonList(client, logger, new XmlParser(), config);
-       FileWatcher watcher = new FileWatcher(addonList, logger, config);
-       schedule.register(30, watcher);
-       java.awt.EventQueue.invokeLater(() -> {
-           Version version = new Version(client, logger);
-           Window window = new Window(addonList, version, themes, logger, schedule, config, new Backup(config), restarter);
-           new FrameRestorer(config).restore(window);
-           window.setVisible(true);
-       });
-    }
+  public GuiMain() {
+    add(new GuiLogger());
+  }
+
+  @Override
+  protected void main(MultiLogger logger, Config config, Request client, FileSystem file)
+      throws FileSystem.FileSystemException, ParserConfigurationException, IOException {
+    file.processPosition();
+    Shedule schedule = new Shedule();
+    Restarter restarter = new Restarter(config);
+    ThemeManager themes = new ThemeManager(logger, config, restarter);
+    GuiAddonList addonList = new GuiAddonList(client, logger, new XmlParser(), config);
+    FileWatcher watcher = new FileWatcher(addonList, logger, config);
+    schedule.register(30, watcher);
+    java.awt.EventQueue.invokeLater(
+        () -> {
+          Version version = new Version(client, logger);
+          Window window =
+              new Window(
+                  addonList,
+                  version,
+                  themes,
+                  logger,
+                  schedule,
+                  config,
+                  new Backup(config),
+                  restarter);
+          new FrameRestorer(config).restore(window);
+          window.setVisible(true);
+        });
+  }
 }
